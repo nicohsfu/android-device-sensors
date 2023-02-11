@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NicoHernandez_A2</string>
+    <string name="sensorsTextView">List of device sensors:</string>
 </resources>

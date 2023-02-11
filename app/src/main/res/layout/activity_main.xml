@@ -24,9 +24,9 @@
                     android:id="@+id/sensorsTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:lineHeight="40sp"
+                    android:lineHeight="44sp"
                     android:text="@string/sensorsTextView"
-                    android:textSize="20sp" />
+                    android:textSize="17sp" />
             </TableRow>
 
         </TableLayout>

@@ -7,29 +7,16 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/LinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp">
 
-        <TableLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/sensorsTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:lineHeight="44sp"
-                    android:text="@string/sensorsTextView"
-                    android:textSize="17sp" />
-            </TableRow>
-
-        </TableLayout>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

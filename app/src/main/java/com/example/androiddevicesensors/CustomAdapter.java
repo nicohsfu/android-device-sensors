@@ -1,6 +1,7 @@
 package com.example.androiddevicesensors;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,8 +74,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
             // next steps:
             // create intent - send to new Values activity
-                    // send value's / sensor's index - putExtras - position variable
-
+            // send value's / sensor's index - putExtras - position variable
+//            Intent i = new Intent(context, SensorInfoActivity.class); // this is erroring out for now
+//            i.putExtra("POSITION", position);
+//            startActivity(i); // this is erroring out for now
         }
     }
 }

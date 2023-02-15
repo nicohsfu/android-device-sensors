@@ -12,6 +12,9 @@
         android:theme="@style/Theme.AndroidDeviceSensors"
         tools:targetApi="31">
         <activity
+            android:name=".SensorInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

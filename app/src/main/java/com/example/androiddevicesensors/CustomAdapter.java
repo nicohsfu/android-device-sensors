@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,7 +37,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public void onBindViewHolder(CustomAdapter.MyViewHolder holder, int position) {
         String results = (list.get(position));
         holder.sensorNameTextView.setText(results);
-        holder.position = position;
+        holder.position = list.indexOf(results);
     }
 
 
@@ -74,10 +75,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
             // next steps:
             // create intent - send to new Values activity
-            // send value's / sensor's index - putExtras - position variable
-//            Intent i = new Intent(context, SensorInfoActivity.class); // this is erroring out for now
-//            i.putExtra("POSITION", position);
-//            startActivity(i); // this is erroring out for now
+//             send value's / sensor's index - putExtras - position variable
+            Intent i = new Intent(context, SensorInfoActivity.class); // this is erroring out for now
+            i.putExtra("POSITION", position);
+            view.getContext().startActivity(i); // this is erroring out for now
         }
     }
 }

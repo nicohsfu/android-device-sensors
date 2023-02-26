@@ -8,9 +8,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SensorInfoActivity extends AppCompatActivity implements SensorEventListener {

@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="Moving?" />
+            android:text="Is the device moving?" />
 
         <TextView
             android:id="@+id/movementStatusTextView"

@@ -20,6 +20,7 @@ public class SensorInfoActivity extends AppCompatActivity implements SensorEvent
     Sensor sensor;
 
     TextView sensorValsTextView;
+    TextView specificSensorNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +30,12 @@ public class SensorInfoActivity extends AppCompatActivity implements SensorEvent
         sensorValsTextView = findViewById(R.id.sensorValsTextView);
 
         int i = getIntent().getIntExtra("POSITION", -1);
+//        Toast.makeText(this, "index position: " + i, Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(this, "index position: " + i, Toast.LENGTH_SHORT).show();
+        specificSensorNameTextView = findViewById(R.id.specificSensorNameTextView);
+        String sensorName = getIntent().getStringExtra("SENSORNAME");
+//        Toast.makeText(this, "specific sensor name: " + sensorName, Toast.LENGTH_SHORT).show();
+        specificSensorNameTextView.setText(sensorName);
 
         mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 

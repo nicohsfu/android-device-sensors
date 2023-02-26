@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             mArrayList.add(s.getName());
         }
 
-        Toast.makeText(this, " " + mArrayList.size(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Array Size: " + mArrayList.size(), Toast.LENGTH_SHORT).show();
 
         customAdapter = new com.example.androiddevicesensors.CustomAdapter(mArrayList);
         myRecycler.setAdapter(customAdapter);

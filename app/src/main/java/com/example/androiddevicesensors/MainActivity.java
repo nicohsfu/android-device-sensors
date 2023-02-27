@@ -9,6 +9,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private RecyclerView myRecycler;
 
     SensorManager mySensorManager;
+
+    Sensor lightSensor;
+    MediaPlayer mediaPlayer;
+    private boolean isSensorCovered = false;
 
     TextView sensorsTextView;
 
@@ -60,20 +65,39 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         statusButton = findViewById(R.id.statusButton);
         statusButton.setOnClickListener(this);
+
+        lightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        mediaPlayer = MediaPlayer.create(this, R.raw.beep);
     }
 
     protected void onResume() {
         super.onResume();
+        mySensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     protected void onPause() {
         mySensorManager.unregisterListener(this);
         super.onPause();
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+        }
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-
+        if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
+            float lightValue = event.values[0];
+            if (lightValue == 0 && !isSensorCovered) {
+                isSensorCovered = true;
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
+            } else if (lightValue > 0 && isSensorCovered) {
+                isSensorCovered = false;
+                mediaPlayer.setLooping(true);
+                mediaPlayer.pause();
+                mediaPlayer.seekTo(0);
+            }
+        }
     }
 
     @Override

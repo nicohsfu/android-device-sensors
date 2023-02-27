@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         statusButton.setOnClickListener(this);
 
         lightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+        // I imported this "beep" sound file into the res/raw directory
         mediaPlayer = MediaPlayer.create(this, R.raw.beep);
     }
 
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+//        if the light sensor is fully covered, i.e. its value is 0, play the looping beep sound
         if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
             float lightValue = event.values[0];
             if (lightValue == 0 && !isSensorCovered) {

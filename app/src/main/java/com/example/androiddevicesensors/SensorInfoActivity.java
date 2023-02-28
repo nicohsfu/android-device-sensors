@@ -27,12 +27,16 @@ public class SensorInfoActivity extends AppCompatActivity implements SensorEvent
 
         sensorValsTextView = findViewById(R.id.sensorValsTextView);
 
+        // retrieving the data we passed along with the intent from the Custom Adapter class
         int i = getIntent().getIntExtra("POSITION", -1);
-//        Toast.makeText(this, "index position: " + i, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "index position: " + i, Toast.LENGTH_SHORT).show();
 
         specificSensorNameTextView = findViewById(R.id.specificSensorNameTextView);
+
+        // retrieving the data we passed along with the intent from the Custom Adapter class
         String sensorName = getIntent().getStringExtra("SENSORNAME");
-//        Toast.makeText(this, "specific sensor name: " + sensorName, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "specific sensor name: " + sensorName, Toast.LENGTH_SHORT).show();
+
         specificSensorNameTextView.setText(sensorName);
 
         mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -41,19 +45,22 @@ public class SensorInfoActivity extends AppCompatActivity implements SensorEvent
 
         sensor = mList.get(i);
     }
+
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         mySensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        // the respective values for a given sensor is stred in the vals variable, and these values are then appended to the initially-empty string variable "s"
         float[] vals = event.values;
         String s = "";
-        for(int i = 0; i < vals.length; i++){
+        for (int i = 0; i < vals.length; i++) {
             s += ("" + vals[i] + "\n");
         }
+        // we then update the textview to display these sensor values
         sensorValsTextView.setText(s);
     }
 

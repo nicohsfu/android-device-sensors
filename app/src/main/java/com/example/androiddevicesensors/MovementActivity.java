@@ -30,6 +30,7 @@ public class MovementActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movement);
 
+        // find the button from the XML layout and associate with an onClick listener
         movementStatusButton = findViewById(R.id.movementStatusButton);
         movementStatusButton.setOnClickListener(this);
 
@@ -52,11 +53,13 @@ public class MovementActivity extends AppCompatActivity implements View.OnClickL
 //        Toast.makeText(this, "moving? button clicked", Toast.LENGTH_SHORT).show();
 //        movementStatusTextView.setText("Stationary"); // placeholder
 
+        // show the text view only after the user clicks on the button
         movementStatusTextView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        // the 3 values for the accelerometer sensor
         float x = event.values[0];
         float y = event.values[1];
         float z = event.values[2];

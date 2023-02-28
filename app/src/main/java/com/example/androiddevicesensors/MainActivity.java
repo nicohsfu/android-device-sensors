@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onPause() {
         mySensorManager.unregisterListener(this);
         super.onPause();
+        // pause the music when the app is on the onPause state
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
         }
@@ -92,11 +93,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             float lightValue = event.values[0];
             if (lightValue == 0 && !isSensorCovered) {
                 isSensorCovered = true;
+                // emit the beeping sound
                 mediaPlayer.setLooping(true);
                 mediaPlayer.start();
             } else if (lightValue > 0 && isSensorCovered) {
                 isSensorCovered = false;
                 mediaPlayer.setLooping(true);
+                // pause the beeping sound
                 mediaPlayer.pause();
                 mediaPlayer.seekTo(0);
             }
@@ -110,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onClick(View v) {
+        // bring the user to the Movement Activity when clicking the button
         Intent i = new Intent(MainActivity.this, MovementActivity.class);
         startActivity(i);
     }

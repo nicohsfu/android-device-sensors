@@ -64,7 +64,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
             itemView.setOnClickListener(this);
             context = itemView.getContext();
-
         }
 
         @Override
@@ -73,13 +72,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 //                    "You have clicked " + ((TextView) view.findViewById(R.id.sensorNameTextView)).getText().toString(),
 //                    Toast.LENGTH_SHORT).show();
 
-            // next steps:
-            // create intent - send to new Values activity
-//             send value's / sensor's index - putExtras - position variable
-            Intent i = new Intent(context, SensorInfoActivity.class); // this is erroring out for now
+            Intent i = new Intent(context, SensorInfoActivity.class);
             i.putExtra("POSITION", position);
             i.putExtra("SENSORNAME", sensorNameTextView.getText().toString());
-            view.getContext().startActivity(i); // this is erroring out for now
+            view.getContext().startActivity(i);
         }
     }
 }

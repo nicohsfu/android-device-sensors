@@ -14,4 +14,4 @@ Some features of the app:
 
 ## Demo
 
-![demo of the app](linkHere)
+![demo of the app](https://raw.githubusercontent.com/nicohsfu/android-device-sensors/db23d8b4ef258e019de537442e75578489a85261/demo/demo.gif)
